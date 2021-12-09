@@ -23,15 +23,7 @@ extension URLRequest {
                 return URLSession.shared.rx.data(request: request)
             }.map { data -> T in
                 return try JSONDecoder().decode(T.self, from: data)
-            }.asObservable()
-
-        // The above code works without error.
-        // The below code doesn't work with error.(<- udemy code, why?)
-//            }.map { data -> T? in
-//                return try? JSONDecoder().decode(T.self, from: data)
-//            }.asObservable()
-
-        
+            }.asObservable()        
     }
     
 }
